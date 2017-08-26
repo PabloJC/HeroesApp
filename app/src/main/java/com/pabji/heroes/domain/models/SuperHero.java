@@ -10,6 +10,20 @@ public class SuperHero {
     private String abilities;
     private String groups;
 
+    public SuperHero(String name, String photo, String realName, String height, String power, String abilities, String groups) {
+        this.name = name;
+        this.photo = photo;
+        this.realName = realName;
+        this.height = height;
+        this.power = power;
+        this.abilities = abilities;
+        this.groups = groups;
+    }
+
+    public SuperHero(){
+
+    }
+
     public String getName() { return this.name; }
 
     public void setName(String name) { this.name = name; }

@@ -108,4 +108,9 @@ public class HeroDetailActivity  extends BaseMVPActivity<HeroDetailPresenter,Her
     public void showGroups(String groups) {
         tv_heroGroups.setText(groups);
     }
+
+    @Override
+    public void showError(String error) {
+
+    }
 }

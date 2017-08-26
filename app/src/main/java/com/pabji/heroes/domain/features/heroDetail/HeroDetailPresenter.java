@@ -1,7 +1,6 @@
 package com.pabji.heroes.domain.features.heroDetail;
 
 import android.content.Context;
-import android.widget.Toast;
 
 import com.pabji.heroes.domain.base.BasePresenter;
 import com.pabji.heroes.domain.callbacks.ResultCallback;
@@ -9,20 +8,17 @@ import com.pabji.heroes.domain.enums.ResultError;
 import com.pabji.heroes.domain.models.SuperHero;
 import com.pabji.heroes.presentation.navigation.Router;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
 public class HeroDetailPresenter extends BasePresenter<HeroDetailView> {
 
-    @Inject
-    Router navigator;
+    private Router router;
+    private HeroDetailInteractor heroDetailInteractor;
 
     @Inject
-    HeroDetailInteractor heroDetailInteractor;
-
-    @Inject
-    public HeroDetailPresenter() {
+    public HeroDetailPresenter(Router router, HeroDetailInteractor heroDetailIteractor) {
+        this.router = router;
+        this.heroDetailInteractor = heroDetailIteractor;
     }
 
     public void init(final Context context) {
@@ -34,7 +30,7 @@ public class HeroDetailPresenter extends BasePresenter<HeroDetailView> {
 
             @Override
             public void onError(ResultError error) {
-                Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
+                getView().showError("ERROR");
             }
         });
     }

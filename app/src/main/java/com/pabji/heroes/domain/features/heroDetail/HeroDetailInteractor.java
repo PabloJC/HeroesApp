@@ -12,8 +12,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import rx.Subscriber;
-
 public class HeroDetailInteractor implements BaseInteractor<SuperHero> {
 
     private ApiRepository apiRepository;
