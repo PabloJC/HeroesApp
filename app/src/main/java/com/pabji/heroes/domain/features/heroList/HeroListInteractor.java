@@ -1,4 +1,4 @@
-package com.pabji.heroes.domain.features.heroeList;
+package com.pabji.heroes.domain.features.heroList;
 
 import com.pabji.heroes.data.entities.ApiEntity;
 import com.pabji.heroes.domain.base.BaseInteractor;
@@ -13,12 +13,12 @@ import java.util.List;
 import javax.inject.Inject;
 import rx.Subscriber;
 
-public class HeroeListInteractor extends RxInteractor<ApiEntity> implements BaseInteractor<List<SuperHero>> {
+public class HeroListInteractor extends RxInteractor<ApiEntity> implements BaseInteractor<List<SuperHero>> {
 
     private ApiRepository apiRepository;
 
     @Inject
-    public HeroeListInteractor(ApiRepository apiRepository){
+    public HeroListInteractor(ApiRepository apiRepository){
         this.apiRepository = apiRepository;
     }
 

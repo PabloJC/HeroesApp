@@ -3,6 +3,8 @@ package com.pabji.heroes.presentation.navigation;
 import android.content.Context;
 import android.content.Intent;
 
+import com.pabji.heroes.domain.features.heroDetail.HeroDetailView;
+import com.pabji.heroes.presentation.activities.heroDetail.HeroDetailActivity;
 import com.pabji.heroes.presentation.activities.main.MainActivity;
 import com.pabji.heroes.presentation.base.BaseActivity;
 
@@ -17,9 +19,17 @@ public class Router {
         this.application = application;
     }
 
-    public void goToMainActivity() {
+    public void goToMain() {
         if(application != null) {
             Intent intent = MainActivity.getCallingIntent(application);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            application.startActivity(intent);
+        }
+    }
+
+    public void goToHeroDetail() {
+        if(application != null) {
+            Intent intent = HeroDetailActivity.getCallingIntent(application);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             application.startActivity(intent);
         }

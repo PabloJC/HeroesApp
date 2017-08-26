@@ -1,4 +1,4 @@
-package com.pabji.heroes.domain.features.heroeList;
+package com.pabji.heroes.domain.features.heroList;
 
 import android.content.Context;
 import android.widget.Toast;
@@ -6,6 +6,7 @@ import android.widget.Toast;
 import com.pabji.heroes.domain.base.BasePresenter;
 import com.pabji.heroes.domain.callbacks.ResultCallback;
 import com.pabji.heroes.domain.enums.ResultError;
+import com.pabji.heroes.domain.features.heroDetail.HeroDetailInteractor;
 import com.pabji.heroes.domain.models.SuperHero;
 import com.pabji.heroes.presentation.navigation.Router;
 
@@ -16,10 +17,13 @@ import javax.inject.Inject;
 public class HeroeListPresenter extends BasePresenter<HeroeListView> {
 
     @Inject
-    Router navigator;
+    Router router;
 
     @Inject
-    HeroeListInteractor listInteractor;
+    HeroListInteractor listInteractor;
+
+    @Inject
+    HeroDetailInteractor detailInteractor;
 
     @Inject
     public HeroeListPresenter() {
@@ -38,5 +42,10 @@ public class HeroeListPresenter extends BasePresenter<HeroeListView> {
                 Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void openDetail(SuperHero superHero) {
+        detailInteractor.setCurrentHero(superHero);
+        router.goToHeroDetail();
     }
 }

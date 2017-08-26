@@ -3,21 +3,18 @@ package com.pabji.heroes.presentation.fragments;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.pabji.heroes.R;
 import com.pabji.heroes.domain.models.SuperHero;
-import com.pabji.heroes.domain.features.heroeList.HeroeListPresenter;
-import com.pabji.heroes.domain.features.heroeList.HeroeListView;
-import com.pabji.heroes.presentation.activities.main.MainActivity;
+import com.pabji.heroes.domain.features.heroList.HeroeListPresenter;
+import com.pabji.heroes.domain.features.heroList.HeroeListView;
 import com.pabji.heroes.presentation.activities.main.MainComponent;
-import com.pabji.heroes.presentation.adapters.HeroeListAdapter;
+import com.pabji.heroes.presentation.adapters.HeroListAdapter;
 import com.pabji.heroes.presentation.base.BaseMVPFragment;
 
 import java.util.List;
@@ -28,10 +25,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public class HeroeListFragment extends BaseMVPFragment<HeroeListPresenter,HeroeListView> implements HeroeListView{
+public class HeroeListFragment extends BaseMVPFragment<HeroeListPresenter,HeroeListView> implements HeroeListView, HeroListAdapter.HeroListListener {
 
     @Inject
-    HeroeListAdapter recipeListAdapter;
+    HeroListAdapter recipeListAdapter;
 
     @BindView(R.id.rv_heroe_list)
     RecyclerView rv_heroeList;
@@ -83,7 +80,12 @@ public class HeroeListFragment extends BaseMVPFragment<HeroeListPresenter,HeroeL
 
     @Override
     public void showList(List<SuperHero> superHeros) {
-        recipeListAdapter.setData(superHeros);
+        recipeListAdapter.setData(superHeros, this);
+    }
+
+    @Override
+    public void openDetail(SuperHero superHero) {
+        presenter.openDetail(superHero);
     }
 }
 
