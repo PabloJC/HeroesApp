@@ -14,19 +14,17 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-public class HeroeListPresenter extends BasePresenter<HeroeListView> {
+public class HeroListPresenter extends BasePresenter<HeroListView> {
+
+    private Router router;
+    private HeroListInteractor listInteractor;
+    private HeroDetailInteractor detailInteractor;
 
     @Inject
-    Router router;
-
-    @Inject
-    HeroListInteractor listInteractor;
-
-    @Inject
-    HeroDetailInteractor detailInteractor;
-
-    @Inject
-    public HeroeListPresenter() {
+    public HeroListPresenter(Router router,HeroListInteractor listInteractor, HeroDetailInteractor detailInteractor) {
+        this.router = router;
+        this.listInteractor = listInteractor;
+        this.detailInteractor = detailInteractor;
     }
 
     public void init(final Context context) {
@@ -39,7 +37,7 @@ public class HeroeListPresenter extends BasePresenter<HeroeListView> {
 
             @Override
             public void onError(ResultError error) {
-                Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
+                getView().showError("ERROR");
             }
         });
     }

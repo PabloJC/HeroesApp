@@ -1,6 +1,7 @@
 package com.pabji.heroes.presentation.activities.main;
 
 import com.pabji.heroes.data.repositories.heroe.ApiRepository;
+import com.pabji.heroes.domain.features.heroDetail.HeroDetailInteractor;
 import com.pabji.heroes.domain.features.heroList.HeroListInteractor;
 import com.pabji.heroes.presentation.adapters.HeroListAdapter;
 
@@ -12,8 +13,13 @@ public class MainModule {
     public MainModule(){}
 
     @Provides
-    HeroListInteractor provideRecipeListInteractor(ApiRepository recipeRepository){
-        return new HeroListInteractor(recipeRepository);
+    HeroListInteractor provideHeroListInteractor(ApiRepository apiRepository){
+        return new HeroListInteractor(apiRepository);
+    }
+
+    @Provides
+    HeroDetailInteractor provideHeroDetailInteractor(ApiRepository apiRepository){
+        return new HeroDetailInteractor(apiRepository);
     }
 
     @Provides

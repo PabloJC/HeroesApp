@@ -7,7 +7,7 @@ import android.os.Bundle;
 import com.pabji.heroes.R;
 import com.pabji.heroes.presentation.base.BaseActivity;
 import com.pabji.heroes.presentation.di.HasComponent;
-import com.pabji.heroes.presentation.fragments.HeroeListFragment;
+import com.pabji.heroes.presentation.fragments.HeroListFragment;
 
 public class MainActivity extends BaseActivity implements HasComponent<MainComponent> {
 
@@ -17,7 +17,7 @@ public class MainActivity extends BaseActivity implements HasComponent<MainCompo
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        addFragment(R.id.fragment_container, HeroeListFragment.newInstance());
+        addFragment(R.id.fragment_container, HeroListFragment.newInstance());
     }
 
     @Override

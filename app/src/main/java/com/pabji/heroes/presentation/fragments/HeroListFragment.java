@@ -8,11 +8,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.pabji.heroes.R;
+import com.pabji.heroes.domain.features.heroList.HeroListPresenter;
+import com.pabji.heroes.domain.features.heroList.HeroListView;
 import com.pabji.heroes.domain.models.SuperHero;
-import com.pabji.heroes.domain.features.heroList.HeroeListPresenter;
-import com.pabji.heroes.domain.features.heroList.HeroeListView;
 import com.pabji.heroes.presentation.activities.main.MainComponent;
 import com.pabji.heroes.presentation.adapters.HeroListAdapter;
 import com.pabji.heroes.presentation.base.BaseMVPFragment;
@@ -25,7 +26,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public class HeroeListFragment extends BaseMVPFragment<HeroeListPresenter,HeroeListView> implements HeroeListView, HeroListAdapter.HeroListListener {
+public class HeroListFragment extends BaseMVPFragment<HeroListPresenter,HeroListView> implements HeroListView, HeroListAdapter.HeroListListener {
 
     @Inject
     HeroListAdapter recipeListAdapter;
@@ -36,8 +37,8 @@ public class HeroeListFragment extends BaseMVPFragment<HeroeListPresenter,HeroeL
     private Unbinder unbind;
     private MainComponent component;
 
-    public static HeroeListFragment newInstance() {
-        return new HeroeListFragment();
+    public static HeroListFragment newInstance() {
+        return new HeroListFragment();
     }
 
     @Override
@@ -74,7 +75,7 @@ public class HeroeListFragment extends BaseMVPFragment<HeroeListPresenter,HeroeL
 
     @NonNull
     @Override
-    public HeroeListPresenter createPresenter() {
+    public HeroListPresenter createPresenter() {
         return component.heroeListPresenter();
     }
 
@@ -86,6 +87,11 @@ public class HeroeListFragment extends BaseMVPFragment<HeroeListPresenter,HeroeL
     @Override
     public void openDetail(SuperHero superHero) {
         presenter.openDetail(superHero);
+    }
+
+    @Override
+    public void showError(String error) {
+        Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
     }
 }
 

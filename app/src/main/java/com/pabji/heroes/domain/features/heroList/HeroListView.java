@@ -5,7 +5,7 @@ import com.pabji.heroes.domain.base.BaseView;
 
 import java.util.List;
 
-public interface HeroeListView extends BaseView {
+public interface HeroListView extends BaseView {
 
     void showList(List<SuperHero> superHeros);
 }

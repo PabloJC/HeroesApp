@@ -29,4 +29,5 @@ ext {
     glide_version = '3.7.0'
     butterknife_version = '8.2.1'
     mosby_version = '2.0.1'
+    mockito_version = '2.7.22'
 }
