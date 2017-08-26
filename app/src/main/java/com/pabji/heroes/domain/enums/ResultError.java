@@ -6,5 +6,5 @@ package com.pabji.heroes.domain.enums;
 
 public enum ResultError {
     CONNECTIVITY_ERROR,
-    API_ERROR
+    NO_DATA, API_ERROR
 }

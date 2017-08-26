@@ -18,16 +18,22 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
-public class HeroeListAdapter extends RecyclerView.Adapter<HeroeListAdapter.HeroeListItemHolder> {
+public class HeroListAdapter extends RecyclerView.Adapter<HeroListAdapter.HeroeListItemHolder> {
 
     private List<SuperHero> listItem = new ArrayList<>();
 
     private static final int TYPE1 = 0;
     private static final int TYPE2 = 1;
+    private HeroListListener listener;
+
+    public interface HeroListListener {
+        void openDetail(SuperHero superHero);
+    }
 
     @Inject
-    public HeroeListAdapter(){}
+    public HeroListAdapter(){}
 
     @Override
     public int getItemViewType(int position) {
@@ -38,7 +44,7 @@ public class HeroeListAdapter extends RecyclerView.Adapter<HeroeListAdapter.Hero
     }
 
     @Override
-    public HeroeListAdapter.HeroeListItemHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public HeroListAdapter.HeroeListItemHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_hero_list_1, parent, false);
 
@@ -50,7 +56,7 @@ public class HeroeListAdapter extends RecyclerView.Adapter<HeroeListAdapter.Hero
     }
 
     @Override
-    public void onBindViewHolder(HeroeListAdapter.HeroeListItemHolder holder, int position) {
+    public void onBindViewHolder(HeroListAdapter.HeroeListItemHolder holder, int position) {
         holder.bindItem(listItem.get(position));
     }
 
@@ -60,8 +66,9 @@ public class HeroeListAdapter extends RecyclerView.Adapter<HeroeListAdapter.Hero
     }
 
 
-    public void setData(List<SuperHero> heroList) {
+    public void setData(List<SuperHero> heroList, HeroListListener listener) {
         this.listItem = heroList;
+        this.listener = listener;
         this.notifyDataSetChanged();
     }
 
@@ -73,6 +80,7 @@ public class HeroeListAdapter extends RecyclerView.Adapter<HeroeListAdapter.Hero
 
         @BindView(R.id.iv_hero_photo)
         ImageView iv_heroPhoto;
+        private SuperHero superHero;
 
 
         public HeroeListItemHolder(View itemView) {
@@ -81,8 +89,15 @@ public class HeroeListAdapter extends RecyclerView.Adapter<HeroeListAdapter.Hero
         }
 
         public void bindItem(SuperHero superHero) {
+            this.superHero = superHero;
+
             tv_heroName.setText(superHero.getName());
             Glide.with(itemView.getContext()).load(superHero.getPhoto()).centerCrop().into(iv_heroPhoto);
+        }
+
+        @OnClick(R.id.item)
+        public void clickItem(){
+            listener.openDetail(superHero);
         }
     }
 }
