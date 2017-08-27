@@ -18,6 +18,7 @@ import com.pabji.heroes.domain.models.SuperHero;
 import com.pabji.heroes.presentation.activities.main.MainComponent;
 import com.pabji.heroes.presentation.adapters.HeroListAdapter;
 import com.pabji.heroes.presentation.base.BaseMVPFragment;
+import com.pabji.heroes.presentation.constants.ActivityConstans;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,7 +68,7 @@ public class HeroListFragment extends BaseMVPFragment<HeroListPresenter,HeroList
         initRecyclerView();
 
         if(savedInstanceState != null){
-            heroList = savedInstanceState.getParcelableArrayList("heroList");
+            heroList = savedInstanceState.getParcelableArrayList(ActivityConstans.HERO_LIST);
             showList(heroList);
         }else{
             presenter.init();
@@ -123,8 +124,8 @@ public class HeroListFragment extends BaseMVPFragment<HeroListPresenter,HeroList
     }
 
     @Override
-    public void showError(String error) {
-        Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
+    public void showError() {
+        Toast.makeText(getContext(), R.string.error, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -135,7 +136,7 @@ public class HeroListFragment extends BaseMVPFragment<HeroListPresenter,HeroList
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putParcelableArrayList("heroList",heroList);
+        outState.putParcelableArrayList(ActivityConstans.HERO_LIST,heroList);
     }
 }
 

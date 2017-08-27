@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.pabji.heroes.R;
@@ -61,7 +62,7 @@ public class HeroDetailActivity  extends BaseMVPActivity<HeroDetailPresenter,Her
 
         setupToolbar(toolbar);
 
-        presenter.init(this);
+        presenter.init();
 
     }
 
@@ -106,32 +107,32 @@ public class HeroDetailActivity  extends BaseMVPActivity<HeroDetailPresenter,Her
 
     @Override
     public void showRealName(String realName) {
-        setElemContent(v_heroRealName,R.drawable.ic_name,"Real Name",realName);
+        setElemContent(v_heroRealName,R.drawable.ic_name,getString(R.string.real_name),realName);
     }
 
     @Override
     public void showPower(String power) {
-        setElemContent(v_heroPower,R.drawable.power,"Power",power);
+        setElemContent(v_heroPower,R.drawable.power,getString(R.string.power),power);
     }
 
     @Override
     public void showHeight(String height) {
-        setElemContent(v_heroHeight,R.drawable.ic_height,"Height",height);
+        setElemContent(v_heroHeight,R.drawable.ic_height,getString(R.string.height),height);
     }
 
     @Override
     public void showAbilities(String abilities) {
-        setElemContent(v_heroAbilities,R.drawable.ic_ability,"Abilities",abilities);
+        setElemContent(v_heroAbilities,R.drawable.ic_ability,getString(R.string.abilities),abilities);
     }
 
     @Override
     public void showGroups(String groups) {
-        setElemContent(v_heroGroups,R.drawable.ic_group,"Groups",groups);
+        setElemContent(v_heroGroups,R.drawable.ic_group,getString(R.string.groups),groups);
     }
 
     @Override
-    public void showError(String error) {
-
+    public void showError() {
+        Toast.makeText(this,R.string.error,Toast.LENGTH_SHORT).show();
     }
 
     private void setElemContent(View view,@DrawableRes int icon, String title, String description){

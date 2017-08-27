@@ -7,7 +7,6 @@ import com.pabji.heroes.domain.features.heroDetail.HeroDetailInteractor;
 import com.pabji.heroes.domain.models.SuperHero;
 import com.pabji.heroes.presentation.navigation.Router;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -44,7 +43,7 @@ public class HeroListPresenter extends BasePresenter<HeroListView> {
 
             @Override
             public void onError(ResultError error) {
-                getView().showError("ERROR");
+                getView().showError();
                 getView().dismissLoading();
             }
         });

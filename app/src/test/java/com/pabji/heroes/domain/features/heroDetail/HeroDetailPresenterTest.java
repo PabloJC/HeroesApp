@@ -32,8 +32,6 @@ public class HeroDetailPresenterTest {
 
     @Mock
     private HeroDetailView mockHeroDetailView;
-    @Mock
-    private Router mockRouter;
 
     @Mock private HeroDetailInteractor mockDetailIteractor;
 
@@ -52,7 +50,7 @@ public class HeroDetailPresenterTest {
 
         MockitoAnnotations.initMocks(this);
 
-        heroDetailPresenter = new HeroDetailPresenter(mockRouter,mockDetailIteractor);
+        heroDetailPresenter = new HeroDetailPresenter(mockDetailIteractor);
         heroDetailPresenter.attachView(mockHeroDetailView);
     }
 

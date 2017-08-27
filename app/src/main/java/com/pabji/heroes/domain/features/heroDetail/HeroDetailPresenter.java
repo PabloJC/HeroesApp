@@ -12,16 +12,14 @@ import javax.inject.Inject;
 
 public class HeroDetailPresenter extends BasePresenter<HeroDetailView> {
 
-    private Router router;
     private HeroDetailInteractor heroDetailInteractor;
 
     @Inject
-    public HeroDetailPresenter(Router router, HeroDetailInteractor heroDetailIteractor) {
-        this.router = router;
+    public HeroDetailPresenter(HeroDetailInteractor heroDetailIteractor) {
         this.heroDetailInteractor = heroDetailIteractor;
     }
 
-    public void init(final Context context) {
+    public void init() {
         heroDetailInteractor.run(new ResultCallback<SuperHero>() {
             @Override
             public void onSuccess(SuperHero result) {
@@ -30,7 +28,7 @@ public class HeroDetailPresenter extends BasePresenter<HeroDetailView> {
 
             @Override
             public void onError(ResultError error) {
-                getView().showError("ERROR");
+                getView().showError();
             }
         });
     }

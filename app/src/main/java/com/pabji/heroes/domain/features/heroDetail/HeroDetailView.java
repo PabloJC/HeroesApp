@@ -20,6 +20,4 @@ public interface HeroDetailView extends BaseView {
     void showAbilities(String abilities);
 
     void showGroups(String groups);
-
-
 }

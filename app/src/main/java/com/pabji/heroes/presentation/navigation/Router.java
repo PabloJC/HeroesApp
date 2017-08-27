@@ -21,14 +21,6 @@ public class Router {
         this.application = application;
     }
 
-    public void goToMain() {
-        if(application != null) {
-            Intent intent = MainActivity.getCallingIntent(application);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            application.startActivity(intent);
-        }
-    }
-
     public void goToHeroDetail() {
         if(application != null) {
             Intent intent = HeroDetailActivity.getCallingIntent(application);
