@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="app_bar_layout_height">230dp</dimen>
+    <dimen name="detail_iv_square_size">30dp</dimen>
+    <dimen name="detail_iv_margin">5dp</dimen>
+    <dimen name="detail_tv_title_size">20sp</dimen>
+    <dimen name="detail_tv_description_size">15sp</dimen>
+    <dimen name="detail_tv_description_margintop">5dp</dimen>
+    <dimen name="detail_iv_ll_padding">10dp</dimen>
+    <dimen name="item_hero_card_height">120dp</dimen>
+    <dimen name="item_hero_card_margin">5dp</dimen>
+    <dimen name="zero_dp">0dp</dimen>
+    <dimen name="item_hero_card_photo_text_size">20sp</dimen>
+</resources>

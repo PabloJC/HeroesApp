@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Heroes</string>
+    <string name="error">Error</string>
+    <string name="real_name">Real Name</string>
+    <string name="power">Power</string>
+    <string name="height">Height</string>
+    <string name="abilities">Abilities</string>
+    <string name="groups">Groups</string>
 </resources>

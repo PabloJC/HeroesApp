@@ -1,8 +1,5 @@
 package com.pabji.heroes.domain.features.heroList;
 
-import android.content.Context;
-import android.widget.Toast;
-
 import com.pabji.heroes.domain.base.BasePresenter;
 import com.pabji.heroes.domain.callbacks.ResultCallback;
 import com.pabji.heroes.domain.enums.ResultError;
@@ -21,29 +18,34 @@ public class HeroListPresenter extends BasePresenter<HeroListView> {
     private HeroDetailInteractor detailInteractor;
 
     @Inject
-    public HeroListPresenter(Router router,HeroListInteractor listInteractor, HeroDetailInteractor detailInteractor) {
+    public HeroListPresenter(Router router, HeroListInteractor listInteractor, HeroDetailInteractor detailInteractor) {
         this.router = router;
         this.listInteractor = listInteractor;
         this.detailInteractor = detailInteractor;
     }
 
-    public void init(final Context context) {
+
+    public void openDetail(SuperHero superHero) {
+        detailInteractor.setCurrentHero(superHero);
+        router.goToHeroDetail();
+    }
+
+    public void init() {
+
+        getView().showLoading();
 
         listInteractor.run(new ResultCallback<List<SuperHero>>() {
             @Override
             public void onSuccess(List<SuperHero> result) {
                 getView().showList(result);
+                getView().dismissLoading();
             }
 
             @Override
             public void onError(ResultError error) {
-                getView().showError("ERROR");
+                getView().showError();
+                getView().dismissLoading();
             }
         });
-    }
-
-    public void openDetail(SuperHero superHero) {
-        detailInteractor.setCurrentHero(superHero);
-        router.goToHeroDetail();
     }
 }

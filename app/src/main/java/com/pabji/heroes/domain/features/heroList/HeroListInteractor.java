@@ -8,6 +8,7 @@ import com.pabji.heroes.domain.executor.RxInteractor;
 import com.pabji.heroes.domain.callbacks.ResultCallback;
 import com.pabji.heroes.domain.enums.ResultError;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -16,6 +17,7 @@ import rx.Subscriber;
 public class HeroListInteractor extends RxInteractor<ApiEntity> implements BaseInteractor<List<SuperHero>> {
 
     private ApiRepository apiRepository;
+    private List<SuperHero> list = new ArrayList<>();
 
     @Inject
     public HeroListInteractor(ApiRepository apiRepository){
