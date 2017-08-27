@@ -1,6 +1,9 @@
 package com.pabji.heroes.domain.models;
 
-public class SuperHero {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class SuperHero implements Parcelable{
 
     private String name;
     private String photo;
@@ -23,6 +26,44 @@ public class SuperHero {
     public SuperHero(){
 
     }
+
+    protected SuperHero(Parcel in) {
+        name = in.readString();
+        photo = in.readString();
+        realName = in.readString();
+        height = in.readString();
+        power = in.readString();
+        abilities = in.readString();
+        groups = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeString(photo);
+        dest.writeString(realName);
+        dest.writeString(height);
+        dest.writeString(power);
+        dest.writeString(abilities);
+        dest.writeString(groups);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<SuperHero> CREATOR = new Creator<SuperHero>() {
+        @Override
+        public SuperHero createFromParcel(Parcel in) {
+            return new SuperHero(in);
+        }
+
+        @Override
+        public SuperHero[] newArray(int size) {
+            return new SuperHero[size];
+        }
+    };
 
     public String getName() { return this.name; }
 

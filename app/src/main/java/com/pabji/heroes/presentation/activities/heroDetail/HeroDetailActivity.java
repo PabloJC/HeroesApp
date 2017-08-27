@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,8 +25,6 @@ public class HeroDetailActivity  extends BaseMVPActivity<HeroDetailPresenter,Her
 
     @BindView(R.id.iv_hero_photo)
     ImageView iv_heroPhoto;
-    @BindView(R.id.tv_hero_name)
-    TextView tv_heroName;
     @BindView(R.id.tv_hero_realname)
     TextView tv_heroRealName;
     @BindView(R.id.tv_hero_power)
@@ -36,6 +35,11 @@ public class HeroDetailActivity  extends BaseMVPActivity<HeroDetailPresenter,Her
     TextView tv_heroAbilities;
     @BindView(R.id.tv_hero_groups)
     TextView tv_heroGroups;
+
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+
+
     private Unbinder unbind;
 
     @Override
@@ -43,6 +47,8 @@ public class HeroDetailActivity  extends BaseMVPActivity<HeroDetailPresenter,Her
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hero_detail);
         unbind = ButterKnife.bind(this);
+
+        setupToolbar(toolbar);
         presenter.init(this);
 
     }
@@ -81,7 +87,7 @@ public class HeroDetailActivity  extends BaseMVPActivity<HeroDetailPresenter,Her
 
     @Override
     public void showName(String name) {
-        tv_heroName.setText(name);
+        setTitle(name);
     }
 
     @Override

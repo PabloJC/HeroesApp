@@ -18,6 +18,7 @@ import com.pabji.heroes.presentation.activities.main.MainComponent;
 import com.pabji.heroes.presentation.adapters.HeroListAdapter;
 import com.pabji.heroes.presentation.base.BaseMVPFragment;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -36,6 +37,7 @@ public class HeroListFragment extends BaseMVPFragment<HeroListPresenter,HeroList
 
     private Unbinder unbind;
     private MainComponent component;
+    private ArrayList<SuperHero> heroList = new ArrayList<>();
 
     public static HeroListFragment newInstance() {
         return new HeroListFragment();
@@ -59,7 +61,14 @@ public class HeroListFragment extends BaseMVPFragment<HeroListPresenter,HeroList
         super.onViewCreated(view, savedInstanceState);
 
         initRecyclerView();
-        presenter.init(getContext());
+
+        if(savedInstanceState != null){
+            heroList = savedInstanceState.getParcelableArrayList("heroList");
+            showList(heroList);
+        }else{
+            presenter.init();
+        }
+
     }
 
     private void initRecyclerView() {
@@ -82,6 +91,7 @@ public class HeroListFragment extends BaseMVPFragment<HeroListPresenter,HeroList
     @Override
     public void showList(List<SuperHero> superHeros) {
         recipeListAdapter.setData(superHeros, this);
+        this.heroList = new ArrayList<>(superHeros);
     }
 
     @Override
@@ -92,6 +102,17 @@ public class HeroListFragment extends BaseMVPFragment<HeroListPresenter,HeroList
     @Override
     public void showError(String error) {
         Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList("heroList",heroList);
     }
 }
 

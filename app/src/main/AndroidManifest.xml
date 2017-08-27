@@ -22,7 +22,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".presentation.activities.main.MainActivity"/>
-        <activity android:name=".presentation.activities.heroDetail.HeroDetailActivity"/>
+        <activity android:name=".presentation.activities.heroDetail.HeroDetailActivity"
+            android:theme="@style/NoToolbar"/>
     </application>
 
 </manifest>

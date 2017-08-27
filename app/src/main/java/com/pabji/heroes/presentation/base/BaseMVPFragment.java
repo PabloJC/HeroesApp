@@ -12,6 +12,7 @@ public abstract class BaseMVPFragment<P extends BasePresenter<V>, V extends Base
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRetainInstance(true);
     }
 
     @SuppressWarnings("unchecked")
