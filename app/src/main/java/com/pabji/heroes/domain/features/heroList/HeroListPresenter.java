@@ -33,15 +33,19 @@ public class HeroListPresenter extends BasePresenter<HeroListView> {
 
     public void init() {
 
+        getView().showLoading();
+
         listInteractor.run(new ResultCallback<List<SuperHero>>() {
             @Override
             public void onSuccess(List<SuperHero> result) {
                 getView().showList(result);
+                getView().dismissLoading();
             }
 
             @Override
             public void onError(ResultError error) {
                 getView().showError("ERROR");
+                getView().dismissLoading();
             }
         });
     }

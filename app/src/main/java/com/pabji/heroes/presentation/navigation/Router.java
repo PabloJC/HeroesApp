@@ -2,6 +2,8 @@ package com.pabji.heroes.presentation.navigation;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.view.View;
 
 import com.pabji.heroes.domain.features.heroDetail.HeroDetailView;
 import com.pabji.heroes.presentation.activities.heroDetail.HeroDetailActivity;
@@ -32,12 +34,6 @@ public class Router {
             Intent intent = HeroDetailActivity.getCallingIntent(application);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             application.startActivity(intent);
-        }
-    }
-
-    public void finishActivity(Context context) {
-        if(context != null) {
-            ((BaseActivity)context).finish();
         }
     }
 }

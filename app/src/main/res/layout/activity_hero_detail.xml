@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/activity_simple_two"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
     <android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/coordinatorlayout"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:expandedTitleMarginStart="70dp">
+        android:fitsSystemWindows="true"
+    android:background="@color/white">
 
         <android.support.design.widget.AppBarLayout
+            android:id="@+id/app_bar_layout"
             android:layout_width="fill_parent"
             android:layout_height="230dp"
-            android:fitsSystemWindows="true"
-            android:theme="@style/DetailToolbar">
+            android:theme="@style/DetailToolbar"
+            android:fitsSystemWindows="true">
 
             <android.support.design.widget.CollapsingToolbarLayout
-                android:id="@+id/CollapsingToolbarLayout1"
+                android:id="@+id/collapsing_toolbar_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:contentScrim="?attr/colorPrimary"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            android:fitsSystemWindows="true">
 
                 <ImageView
                     android:id="@+id/iv_hero_photo"
@@ -46,7 +46,7 @@
         <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fillViewport="true"
+            android:clipToPadding="false"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <LinearLayout
@@ -54,83 +54,24 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Real Name"
-                        android:textSize="16sp"
-                        android:layout_gravity="center_horizontal"/>
-                    <TextView
-                        android:layout_gravity="center_horizontal"
-                        android:text="Peter Parker"
-                        android:id="@+id/tv_hero_realname"
-                        android:textSize="25sp"
-                        android:textStyle="bold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
                 <TextView
-                    android:text="Power"
-                    android:textSize="16sp"
                     android:layout_gravity="center_horizontal"
-                    android:layout_width="wrap_content"
+                    android:text="Peter Parker"
+                    android:id="@+id/tv_hero_name"
+                    style="@style/TextNameDetail"
+                    android:textAlignment="center"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
-                <TextView
-                    android:id="@+id/tv_hero_power"
-                    android:textSize="20sp"
-                    android:text="Mucho poder"
-                    android:textAlignment="center"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:text="Height"
-                    android:textSize="16sp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:id="@+id/tv_hero_height"
-                    android:textSize="20sp"
-                    android:text="Mucho poder"
-                    android:textAlignment="center"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:text="Abilities"
-                    android:textSize="16sp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:id="@+id/tv_hero_abilities"
-                    android:textSize="20sp"
-                    android:text="Mucho poder"
-                    android:textAlignment="center"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:text="Groups"
-                    android:textSize="16sp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:id="@+id/tv_hero_groups"
-                    android:textSize="20sp"
-                    android:text="Mucho poder"
-                    android:textAlignment="center"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"  />
+                    <include layout="@layout/detail_element" android:id="@+id/hero_realname"/>
+                <include layout="@layout/detail_element" android:id="@+id/hero_power"/>
+                <include layout="@layout/detail_element" android:id="@+id/hero_height"/>
+                <include layout="@layout/detail_element" android:id="@+id/hero_abilities"/>
+                <include layout="@layout/detail_element" android:id="@+id/hero_groups"/>
+
             </LinearLayout>
-
 
             </android.support.v4.widget.NestedScrollView>
 
         </android.support.design.widget.CoordinatorLayout>
 
-</RelativeLayout>

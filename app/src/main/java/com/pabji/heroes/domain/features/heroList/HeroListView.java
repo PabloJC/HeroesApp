@@ -9,4 +9,8 @@ import java.util.List;
 public interface HeroListView extends BaseView {
 
     void showList(List<SuperHero> superHeros);
+
+    void showLoading();
+
+    void dismissLoading();
 }
